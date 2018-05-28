@@ -175,7 +175,7 @@ jQuery(function ($) {
 			var el = e.target;
 			var $el = $(el);
 			var val = $el.val().trim();
-			
+
 			if ($el.data('abort')) {
 				$el.data('abort', false);
 			} else if (!val) {
@@ -193,5 +193,9 @@ jQuery(function ($) {
 		}
 	};
 
-	App.init();
+	if (!window.jasmine) {
+		App.init();
+	} else {
+		window.App = App;
+	}
 });
