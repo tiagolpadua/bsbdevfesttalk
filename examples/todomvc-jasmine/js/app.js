@@ -197,5 +197,6 @@ jQuery(function ($) {
 		App.init();
 	} else {
 		window.App = App;
+		window.util = util;
 	}
 });

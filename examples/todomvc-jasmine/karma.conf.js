@@ -1,6 +1,8 @@
 // Karma configuration
 // Generated on Thu May 17 2018 21:26:02 GMT-0300 (-03)
 
+process.env.CHROME_BIN = require('puppeteer').executablePath()
+
 module.exports = function (config) {
   config.set({
 
@@ -30,13 +32,18 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      // source files, that you wanna generate coverage for
+      // do not include tests or libraries
+      // (these files will be instrumented by Istanbul)
+      'js/**/!(*spec).js': ['coverage']
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    // coverage reporter generates the coverage
+    reporters: ['progress', 'coverage'],
 
 
     // web server port
@@ -58,7 +65,8 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    // browsers: ['Chrome'],
+    browsers: ['ChromeHeadless'],
 
 
     // Continuous Integration mode
