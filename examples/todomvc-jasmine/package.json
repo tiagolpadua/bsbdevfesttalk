@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "static -p 9991",
-    "test": "karma start"
+    "test": "rm -rf coverage && karma start"
   },
   "private": true,
   "dependencies": {
@@ -13,10 +13,12 @@
   },
   "devDependencies": {
     "jasmine-core": "^3.1.0",
+    "jasmine-jquery": "^2.1.1",
     "karma": "^2.0.2",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.2",
     "karma-jasmine": "^1.1.2",
+    "karma-jasmine-jquery": "^0.1.1",
     "node-static": "^0.7.10",
     "puppeteer": "^1.4.0"
   }

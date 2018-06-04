@@ -20,7 +20,11 @@ module.exports = function (config) {
       { pattern: 'node_modules/jquery/dist/jquery.js', watched: false },
       { pattern: 'node_modules/handlebars/dist/handlebars.js', watched: false },
       { pattern: 'node_modules/director/build/director.js', watched: false },
-      'js/*.js'
+
+      { pattern: 'node_modules/jasmine-jquery/lib/jasmine-jquery.js', watched: false },
+      'js/*.js',
+      'specs/**/*',
+
     ],
 
 
