@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "start": "static -p 9991",
+    "test": "jest"
+  },
   "private": true,
   "dependencies": {
     "director": "~1.2.2",
@@ -6,5 +10,23 @@
     "jquery": "~2.1.1",
     "todomvc-app-css": "^2.1.0",
     "todomvc-common": "~1.0.1"
+  },
+  "devDependencies": {
+    "jest": "^23.1.0",
+    "node-static": "^0.7.10"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "js/**/*.js"
+    ],
+    "coverageDirectory": "coverage",
+    "setupFiles": [
+      "<rootDir>/jest-setup.js"
+    ],
+    "globals": {
+      "window": true
+    }
   }
 }

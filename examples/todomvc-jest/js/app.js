@@ -1,13 +1,13 @@
 /*global jQuery, Handlebars, Router */
-jQuery(function ($) {
+(function () {
 	'use strict';
+
+	var ENTER_KEY = 13;
+	var ESCAPE_KEY = 27;
 
 	Handlebars.registerHelper('eq', function (a, b, options) {
 		return a === b ? options.fn(this) : options.inverse(this);
 	});
-
-	var ENTER_KEY = 13;
-	var ESCAPE_KEY = 27;
 
 	var util = {
 		uuid: function () {
@@ -175,7 +175,7 @@ jQuery(function ($) {
 			var el = e.target;
 			var $el = $(el);
 			var val = $el.val().trim();
-			
+
 			if ($el.data('abort')) {
 				$el.data('abort', false);
 			} else if (!val) {
@@ -193,5 +193,14 @@ jQuery(function ($) {
 		}
 	};
 
-	App.init();
-});
+	if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+		module.exports = {
+			App: App,
+			util: util
+		}
+	} else {
+		jQuery(function ($) {
+			App.init();
+		});
+	}
+})();
