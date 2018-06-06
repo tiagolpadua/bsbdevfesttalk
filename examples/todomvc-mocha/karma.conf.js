@@ -1,7 +1,6 @@
+// https://developers.google.com/web/updates/2017/06/headless-karma-mocha-chai
 // Karma configuration
-// Generated on Thu May 17 2018 21:26:02 GMT-0300 (-03)
-
-process.env.CHROME_BIN = require('puppeteer').executablePath()
+// Generated on Tue Jun 05 2018 21:37:33 GMT-0300 (-03)
 
 module.exports = function (config) {
   config.set({
@@ -9,9 +8,10 @@ module.exports = function (config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
+
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ['mocha', 'sinon', 'chai'],
 
 
     // list of files / patterns to load in the browser
@@ -21,10 +21,11 @@ module.exports = function (config) {
       { pattern: 'node_modules/handlebars/dist/handlebars.js', watched: false },
       { pattern: 'node_modules/director/build/director.js', watched: false },
 
-      { pattern: 'node_modules/jasmine-jquery/lib/jasmine-jquery.js', watched: false },
+      // { pattern: 'node_modules/jasmine-jquery/lib/jasmine-jquery.js', watched: false },
       'js/*.js',
-      'specs/**/*',
+      'test/**/*.js'
     ],
+
 
     // list of files / patterns to exclude
     exclude: [
@@ -34,9 +35,6 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      // source files, that you wanna generate coverage for
-      // do not include tests or libraries
-      // (these files will be instrumented by Istanbul)
       'js/**/!(*spec).js': ['coverage']
     },
 
@@ -44,7 +42,6 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    // coverage reporter generates the coverage
     reporters: ['progress', 'coverage'],
 
     coverageReporter: {
@@ -71,13 +68,12 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    // browsers: ['Chrome'],
     browsers: ['ChromeHeadless'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true,
+    singleRun: false,
 
     // Concurrency level
     // how many browser should be started simultaneous

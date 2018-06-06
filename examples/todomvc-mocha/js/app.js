@@ -193,5 +193,10 @@ jQuery(function ($) {
 		}
 	};
 
-	App.init();
+	if (!window.mocha) {
+		App.init();
+	} else {
+		window.App = App;
+		window.util = util;
+	}
 });
