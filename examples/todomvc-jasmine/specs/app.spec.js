@@ -1,8 +1,8 @@
+jasmine.getFixtures().fixturesPath = 'base';
+
 describe('TODO MVC App', () => {
 
     'use strict';
-
-    jasmine.getFixtures().fixturesPath = 'base';
 
     describe('App tests', () => {
         let emptyTODOList;
